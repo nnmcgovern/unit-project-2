@@ -23,7 +23,15 @@ export const createRandom = async (req, res) => {
 }
 
 export const updateRandom = async (req, res) => {
+  const { id } = req.params
+  const random = await Random.findByIdAndUpdate(id, req.body)
 
+  if (random) {
+    res.json(random)
+  }
+  else {
+    res.json({ message: "Document not found" })
+  }
 }
 
 export const deleteRandom = async (req, res) => {
