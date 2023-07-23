@@ -1,12 +1,15 @@
-import mongoose from "mongoose"
+import mongoose, { mongo } from "mongoose"
 
 mongoose.set("returnOriginal", false)
 
 mongoose.connect("mongodb://127.0.0.1:27017/unit2API")
-  .then(() => console.log("Connected to MongoDB"))
   .catch((err) => {
     console.log(`Error connecting to MongoDB: ${err.message}`)
   });
+
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB")
+})
 
 mongoose.connection.on("disconnected", () => {
   console.log("Disconnected from MongoDB")
