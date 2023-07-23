@@ -35,5 +35,13 @@ export const updateRandom = async (req, res) => {
 }
 
 export const deleteRandom = async (req, res) => {
+  const { id } = req.params
+  const random = await Random.findByIdAndDelete(id)
 
+  if (random) {
+    res.json({ message: "Document deleted" })
+  }
+  else {
+    res.json({ message: "Document not found" })
+  }
 }
