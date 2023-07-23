@@ -8,6 +8,6 @@ router.get("/:id", controllers.getRandomById)
 router.post("/", controllers.createRandom)
 router.put("/", controllers.updateRandoms)
 router.put("/:id", controllers.updateRandomById)
-router.delete("/:id", controllers.deleteRandom)
+router.delete("/:id", controllers.deleteRandomById)
 
 export default router

@@ -73,8 +73,8 @@ export const updateRandoms = async (req, res) => {
 
     const randoms = await Random.updateMany({ $and: [...arr] }, req.body)
 
-    if (randoms) {
-      res.json(randoms)
+    if (randoms.modifiedCount) {
+      res.json({ message: `${randoms.modifiedCount} document(s) updated` })
     }
     else {
       res.json({ message: "Document(s) not found" })
@@ -85,8 +85,8 @@ export const updateRandoms = async (req, res) => {
     keys.forEach(async key => {
       const random = await Random.updateMany({ [`${key}`]: req.query[key] }, req.body)
 
-      if (random) {
-        res.json(random)
+      if (random.modifiedCount) {
+        res.json({ message: `${random.modifiedCount} document(s) updated` })
       }
       else {
         res.json({ message: "Document(s) not found" })
@@ -107,7 +107,9 @@ export const updateRandomById = async (req, res) => {
   }
 }
 
-export const deleteRandom = async (req, res) => {
+
+
+export const deleteRandomById = async (req, res) => {
   const { id } = req.params
   const random = await Random.findByIdAndDelete(id)
 
