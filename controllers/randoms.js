@@ -107,7 +107,42 @@ export const updateRandomById = async (req, res) => {
   }
 }
 
+export const deleteRandoms = async (req, res) => {
+  const keys = Object.keys(req.query)
 
+  // multiple query parameters
+  if (keys.length > 1) {
+    const arr = []
+
+    keys.forEach(async key => {
+      arr.push({ [`${key}`]: req.query[key] })
+    })
+
+    const randoms = await Random.deleteMany({ $and: [...arr] })
+
+    if (randoms.deletedCount) {
+      res.json({ message: `${randoms.deletedCount} document(s) deleted` })
+      // res.json(randoms)
+    }
+    else {
+      res.json({ message: "Document(s) not found" })
+    }
+  }
+  // one query paramter
+  else {
+    keys.forEach(async key => {
+      const random = await Random.deleteMany({ [`${key}`]: req.query[key] })
+
+      if (random.deletedCount) {
+        res.json({ message: `${random.deletedCount} document(s) deleted` })
+        // res.json(random)
+      }
+      else {
+        res.json({ message: "Document(s) not found" })
+      }
+    })
+  }
+}
 
 export const deleteRandomById = async (req, res) => {
   const { id } = req.params
