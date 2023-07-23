@@ -8,17 +8,17 @@ export const getRandoms = async (req, res) => {
   else {
     const keys = Object.keys(req.query)
 
-    if (keys) {
-      keys.forEach(key => {
-        Random.find({ [`${key}`]: req.query[key] })
-          .then(random => {
-            res.json(random)
-          })
-      })
-    }
-    else {
-      res.json({ message: "Document(s) not found" })
-    }
+    keys.forEach(async key => {
+      const random = await Random.find({ [`${key}`]: req.query[key] })
+
+      if (random.length) {
+        res.json(random)
+      }
+      else {
+        res.json({ message: "Document(s) not found" })
+      }
+    })
+
   }
 }
 
