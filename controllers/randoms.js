@@ -1,8 +1,25 @@
 import Random from "../models/Random.js"
 
-export const getAllRandoms = async (req, res) => {
-  const randoms = await Random.find()
-  res.json(randoms)
+export const getRandoms = async (req, res) => {
+  if (!Object.keys(req.query).length) {
+    const randoms = await Random.find()
+    res.json(randoms)
+  }
+  else {
+    const keys = Object.keys(req.query)
+
+    if (keys) {
+      keys.forEach(key => {
+        Random.find({ [`${key}`]: req.query[key] })
+          .then(random => {
+            res.json(random)
+          })
+      })
+    }
+    else {
+      res.json({ message: "Document(s) not found" })
+    }
+  }
 }
 
 export const getRandom = async (req, res) => {
