@@ -87,7 +87,7 @@ To update one or more documents in the API, a PUT request can be made to:
 - The /DOCUMENT_ID endpoint to specifiy a single document to update by its ID.
 </br>
 
-A PUT request must be submitted with a body containing raw JSON data in the [appropriate format](https://github.com/nnmcgovern/unit-project-2/edit/main/README.md#post-requests).
+A PUT request must be submitted with a body containing raw JSON data in the [appropriate format](https://github.com/nnmcgovern/unit-project-2/#post-requests).
 
 ## DELETE Requests
 To delete one or more documents in the API, a DELETE request can be made to either the base URL (using query parameters) or to the /DOCUMENT_ID endpoint.
