@@ -122,7 +122,6 @@ export const deleteRandoms = async (req, res) => {
 
     if (randoms.deletedCount) {
       res.json({ message: `${randoms.deletedCount} document(s) deleted` })
-      // res.json(randoms)
     }
     else {
       res.json({ message: "Document(s) not found" })
@@ -135,7 +134,6 @@ export const deleteRandoms = async (req, res) => {
 
       if (random.deletedCount) {
         res.json({ message: `${random.deletedCount} document(s) deleted` })
-        // res.json(random)
       }
       else {
         res.json({ message: "Document(s) not found" })
