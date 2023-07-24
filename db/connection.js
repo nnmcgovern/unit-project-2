@@ -1,8 +1,9 @@
 import mongoose from "mongoose"
+const connnectionString = process.env.DB_URL || "mongodb://127.0.0.1:27017/unit2API"
 
 mongoose.set("returnOriginal", false)
 
-mongoose.connect("mongodb://127.0.0.1:27017/unit2API")
+mongoose.connect(connnectionString)
   .catch((err) => {
     console.log(`Error connecting to MongoDB: ${err.message}`)
   });
