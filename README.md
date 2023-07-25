@@ -87,7 +87,15 @@ To update one or more documents in the API, a PUT request can be made to:
 - The /DOCUMENT_ID endpoint to specifiy a single document to update by its ID.
 </br>
 
-A PUT request must be submitted with a body containing raw JSON data in the [appropriate format](https://github.com/nnmcgovern/unit-project-2/#post-requests).
+A PUT request must be submitted with a body of raw JSON data. The body only needs to contain the key-value pairs to be updated. For example, to update the greeting and favoriteFruit values for the document with ID "64bc528f34f5fa568f4bc1aa", you would send a put request to the URL
+```https://random-data-api-50875b874049.herokuapp.com/api/64bc528f34f5fa568f4bc1aa```
+with the following JSON:
+```json
+{
+    "greeting": "Hello, this is my new greeting!",
+    "favoriteFruit": "apple"
+}
+```
 
 ## DELETE Requests
 To delete one or more documents in the API, a DELETE request can be made to either the base URL (using query parameters) or to the /DOCUMENT_ID endpoint.
