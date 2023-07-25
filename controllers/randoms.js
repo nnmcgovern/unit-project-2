@@ -47,9 +47,6 @@ export const updateRandoms = async (req, res) => {
   const keys = Object.keys(req.query)
   const arr = []
   let randoms
-  // const keyIsArray = false
-
-  // console.log(`body: ${Object.keys(req.body)}`)
 
   keys.forEach(key => {
     arr.push({ [`${key}`]: req.query[key] })
