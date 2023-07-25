@@ -111,4 +111,24 @@ To add values to a field where the value type is an array, values to be added mu
 ```
 
 ## DELETE Requests
-To delete one or more documents from the API, a DELETE request can be made to either the base URL (using query parameters) or to the ```/DOCUMENT_ID``` endpoint.
+To delete one or more documents from the API, a DELETE request can be made to either the base URL **(using query parameters to specify which documents to delete)** or to the ```/DOCUMENT_ID``` endpoint.
+
+## Installation
+Requires:
+  - Node Package Manager (NPM)
+  - Nodemon
+  - MongoDB
+
+To install and run the API server locally, fork and clone this repository, then run the follwing commands in the CLI from the repo's root directory:
+```
+npm install
+```
+...to install the necessary dependancies listed in the ```package.json``` file,
+```
+npm run db:seed
+```
+...to create and seed the database, and
+```
+npm run dev
+```
+...to start the server. (Note: the server is set to use port ```3030```)
