@@ -9,36 +9,19 @@ export const getRandoms = async (req, res) => {
   // with query parameters
   else {
     const keys = Object.keys(req.query)
+    const arr = []
 
-    // multiple query parameters
-    if (keys.length > 1) {
-      const arr = []
+    keys.forEach(async key => {
+      arr.push({ [`${key}`]: req.query[key] })
+    })
 
-      keys.forEach(async key => {
-        arr.push({ [`${key}`]: req.query[key] })
-      })
+    const randoms = await Random.find({ $and: [...arr] })
 
-      const randoms = await Random.find({ $and: [...arr] })
-
-      if (randoms.length) {
-        res.json(randoms)
-      }
-      else {
-        res.json({ message: "Document(s) not found" })
-      }
+    if (randoms.length) {
+      res.json(randoms)
     }
-    // one query paramter
     else {
-      keys.forEach(async key => {
-        const random = await Random.find({ [`${key}`]: req.query[key] })
-
-        if (random.length) {
-          res.json(random)
-        }
-        else {
-          res.json({ message: "Document(s) not found" })
-        }
-      })
+      res.json({ message: "Document(s) not found" })
     }
   }
 }
@@ -62,36 +45,19 @@ export const createRandom = async (req, res) => {
 
 export const updateRandoms = async (req, res) => {
   const keys = Object.keys(req.query)
+  const arr = []
 
-  // multiple query parameters
-  if (keys.length > 1) {
-    const arr = []
+  keys.forEach(key => {
+    arr.push({ [`${key}`]: req.query[key] })
+  })
 
-    keys.forEach(async key => {
-      arr.push({ [`${key}`]: req.query[key] })
-    })
+  const randoms = await Random.updateMany({ $and: [...arr] }, req.body)
 
-    const randoms = await Random.updateMany({ $and: [...arr] }, req.body)
-
-    if (randoms.modifiedCount) {
-      res.json({ message: `${randoms.modifiedCount} document(s) updated` })
-    }
-    else {
-      res.json({ message: "Document(s) not found" })
-    }
+  if (randoms.modifiedCount) {
+    res.json({ message: `${randoms.modifiedCount} document(s) updated` })
   }
-  // one query paramter
   else {
-    keys.forEach(async key => {
-      const random = await Random.updateMany({ [`${key}`]: req.query[key] }, req.body)
-
-      if (random.modifiedCount) {
-        res.json({ message: `${random.modifiedCount} document(s) updated` })
-      }
-      else {
-        res.json({ message: "Document(s) not found" })
-      }
-    })
+    res.json({ message: "Document(s) not found" })
   }
 }
 
@@ -109,36 +75,19 @@ export const updateRandomById = async (req, res) => {
 
 export const deleteRandoms = async (req, res) => {
   const keys = Object.keys(req.query)
+  const arr = []
 
-  // multiple query parameters
-  if (keys.length > 1) {
-    const arr = []
+  keys.forEach(key => {
+    arr.push({ [`${key}`]: req.query[key] })
+  })
 
-    keys.forEach(async key => {
-      arr.push({ [`${key}`]: req.query[key] })
-    })
+  const randoms = await Random.deleteMany({ $and: [...arr] })
 
-    const randoms = await Random.deleteMany({ $and: [...arr] })
-
-    if (randoms.deletedCount) {
-      res.json({ message: `${randoms.deletedCount} document(s) deleted` })
-    }
-    else {
-      res.json({ message: "Document(s) not found" })
-    }
+  if (randoms.deletedCount) {
+    res.json({ message: `${randoms.deletedCount} document(s) deleted` })
   }
-  // one query paramter
   else {
-    keys.forEach(async key => {
-      const random = await Random.deleteMany({ [`${key}`]: req.query[key] })
-
-      if (random.deletedCount) {
-        res.json({ message: `${random.deletedCount} document(s) deleted` })
-      }
-      else {
-        res.json({ message: "Document(s) not found" })
-      }
-    })
+    res.json({ message: "Document(s) not found" })
   }
 }
 
