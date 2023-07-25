@@ -119,7 +119,7 @@ Requires:
   - Nodemon
   - MongoDB
 
-To install and run the API server locally, fork and clone this repository, then run the follwing commands in the CLI from the repo's root directory:
+To install and run the API server locally, fork and clone this repository, then run the follwing commands in the CLI from the repository's root directory:
 ```
 npm install
 ```
