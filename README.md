@@ -96,6 +96,19 @@ with the following JSON:
     "favoriteFruit": "apple"
 }
 ```
+To add values to a field where the value type is an array, values to be added must be in an array. For example, the following JSON body can be sent with a PUT request to add new values to the "tags" and "friends" keys:
+```json
+{
+  "friends": [
+    {"id": 123, "name": "New Friend 1"},
+    {"id": 456, "name": "New Friend 2"}
+  ],
+  "tags": [
+    "New Tag 1",
+    "New Tag 2"
+  ]
+}
+```
 
 ## DELETE Requests
 To delete one or more documents in the API, a DELETE request can be made to either the base URL (using query parameters) or to the /DOCUMENT_ID endpoint.
