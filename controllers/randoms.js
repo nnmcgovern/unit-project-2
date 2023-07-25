@@ -46,12 +46,26 @@ export const createRandom = async (req, res) => {
 export const updateRandoms = async (req, res) => {
   const keys = Object.keys(req.query)
   const arr = []
+  let randoms
+  // const keyIsArray = false
+
+  // console.log(`body: ${Object.keys(req.body)}`)
 
   keys.forEach(key => {
     arr.push({ [`${key}`]: req.query[key] })
   })
 
-  const randoms = await Random.updateMany({ $and: [...arr] }, req.body)
+  if (req.body.hasOwnProperty("tags")) {
+    randoms = await Random.updateMany({ $and: [...arr] },
+      { $push: { tags: { $each: [...req.body.tags] } } })
+  }
+  if (req.body.hasOwnProperty("friends")) {
+    randoms = await Random.updateMany({ $and: [...arr] },
+      { $push: { friends: { $each: [...req.body.friends] } } })
+  }
+  if (!req.body.hasOwnProperty("tags") && !req.body.hasOwnProperty("friends")) {
+    randoms = await Random.updateMany({ $and: [...arr] }, req.body)
+  }
 
   if (randoms.modifiedCount) {
     res.json({ message: `${randoms.modifiedCount} document(s) updated` })
@@ -63,7 +77,19 @@ export const updateRandoms = async (req, res) => {
 
 export const updateRandomById = async (req, res) => {
   const { id } = req.params
-  const random = await Random.findByIdAndUpdate(id, req.body)
+  let random
+
+  if (req.body.hasOwnProperty("tags")) {
+    random = await Random.findByIdAndUpdate(id,
+      { $push: { tags: { $each: [...req.body.tags] } } })
+  }
+  if (req.body.hasOwnProperty("friends")) {
+    random = await Random.findByIdAndUpdate(id,
+      { $push: { friends: { $each: [...req.body.friends] } } })
+  }
+  if (!req.body.hasOwnProperty("tags") && !req.body.hasOwnProperty("friends")) {
+    random = await Random.findByIdAndUpdate(id, req.body)
+  }
 
   if (random) {
     res.json(random)
