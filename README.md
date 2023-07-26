@@ -116,7 +116,6 @@ To delete one or more documents from the API, a DELETE request can be made to ei
 ## Installation
 Requires:
   - Node Package Manager (NPM)
-  - Nodemon
   - MongoDB
 
 To install and run the API server locally, fork and clone this repository, then run the follwing commands in the CLI from the repository's root directory:
