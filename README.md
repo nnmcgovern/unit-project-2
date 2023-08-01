@@ -136,4 +136,4 @@ npm start
 
 ### Installation Notes
 - The server is set to use port ```3030```
-- The name of the local database is ```randomDataAPI``` (**WARNING: Running the ```npm run db:seed``` command will drop any pre-existing MongoDB database with this name**)
+- The name of the local database is ```randomDataAPI``` (**WARNING: Running the** ```npm run db:seed``` **command will drop any pre-existing MongoDB database with this name**)
