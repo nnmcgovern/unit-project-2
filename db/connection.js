@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-const connnectionString = process.env.DB_URL || "mongodb://127.0.0.1:27017/unit2API"
+const connnectionString = process.env.DB_URL || "mongodb://127.0.0.1:27017/randomDataAPI"
 
 mongoose.set("returnOriginal", false)
 
