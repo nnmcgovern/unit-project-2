@@ -85,9 +85,11 @@ A POST request to the base URL will add a new document to the API. A body contai
 To update one or more documents in the API, a PUT request can be made to:
 - The base URL (using query paramters to specify which document(s) to update)
 - The /DOCUMENT_ID endpoint to specifiy a single document to update by its ID.
-</br>
+<br />
 
-A PUT request must be submitted with a body of raw JSON data. The body only needs to contain the key-value pairs to be updated. For example, to update the greeting and favoriteFruit values for the document with ID "64bc528f34f5fa568f4bc1aa", you would send a put request to the URL
+A PUT request must be submitted with a body of raw JSON data. The body only needs to contain the key-value pairs to be updated. 
+<br /><br />
+For example, to update the greeting and favoriteFruit values for the document with ID "64bc528f34f5fa568f4bc1aa", you would send a put request to the URL
 ```https://random-data-api-50875b874049.herokuapp.com/api/64bc528f34f5fa568f4bc1aa```
 with the following JSON:
 ```json
