@@ -119,7 +119,7 @@ To remove ALL documents, a delete request can be made to the base URL with no qu
 
 ## Installation
 Requires:
-  - Node Package Manager (NPM)
+  - Node.js
   - MongoDB
 
 To install and run the API server locally, clone this repository on your local machine, then run the following commands in the terminal from the repository's root directory:
