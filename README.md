@@ -118,7 +118,7 @@ Requires:
   - Node Package Manager (NPM)
   - MongoDB
 
-To install and run the API server locally, fork and clone this repository, then run the follwing commands in the CLI from the repository's root directory:
+To install and run the API server locally, clone this repository to your local machine, then run the following commands in the terminal from the repository's root directory:
 ```
 npm install
 ```
@@ -128,6 +128,6 @@ npm run db:seed
 ```
 ...to create and seed the database, and
 ```
-npm run dev
+npm start
 ```
 ...to start the server. (Note: the server is set to use port ```3030```)
