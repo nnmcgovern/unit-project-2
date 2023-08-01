@@ -120,7 +120,7 @@ Requires:
   - Node Package Manager (NPM)
   - MongoDB
 
-To install and run the API server locally, clone this repository to your local machine, then run the following commands in the terminal from the repository's root directory:
+To install and run the API server locally, clone this repository on your local machine, then run the following commands in the terminal from the repository's root directory:
 ```
 npm install
 ```
