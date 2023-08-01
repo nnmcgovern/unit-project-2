@@ -112,7 +112,7 @@ To add values to a field where the value type is an array, values to be added mu
 
 ## DELETE Requests
 To delete one or more documents from the API, a DELETE request can be made to either the base URL (using query parameters to specify which document(s) to delete) or to the ```/DOCUMENT_ID``` endpoint.
-<br />
+<br /><br />
 To remove ALL documents, a delete request can be made to the base URL with no query parameters specified.
 
 ## Installation
